@@ -33,16 +33,16 @@ word2=tk.StringVar()
 word3=tk.StringVar()
 word4=tk.StringVar()
 
-def submit():
-    definition.delete(0)
-    word_val=word.get()
+def submit(word_var,definition_var):
+    definition_var.delete(0)
+    word_val=word_var.get()
     translated_word_val=translator.translate(word_val)
     output=jsonmatches(translated_word_val)
 
     if type(output)==list:
-        definition.insert(0,"\n".join(output))
+        definition_var.insert(0,"\n".join(output))
     else:
-        definition.insert(0,output)
+        definition_var.insert(0,output)
 
 name_label=tk.Label(root, text = 'Enter a word: ', font=('calibre',12))
 name_entry=tk.Entry(root,textvariable = word, font=('calibre',12,'normal'))
@@ -62,23 +62,23 @@ name_entry4=tk.Entry(root,textvariable = word4, font=('calibre',12,'normal'))
 definition_label=tk.Label(root, text="Its Meaning: ", font=('calibre',12))
 definition=tk.Entry(root,width=80,font=('calibre',12,'normal'))
 
-sub_btn=tk.Button(root,text = 'Submit',command=submit)
+sub_btn=tk.Button(root,text = 'Submit',command=lambda : submit(word,definition))
 
 definition_label1=tk.Label(root, text="Its Meaning: ", font=('calibre',12))
 definition1=tk.Entry(root,width=80,font=('calibre',12,'normal'))
-sub_btn1=tk.Button(root,text = 'Submit',command=submit)
+sub_btn1=tk.Button(root,text = 'Submit',command=lambda : submit(word1,definition1))
 
 definition_label2=tk.Label(root, text="Its Meaning: ", font=('calibre',12))
 definition2=tk.Entry(root,width=80,font=('calibre',12,'normal'))
-sub_btn2=tk.Button(root,text = 'Submit',command=submit)
+sub_btn2=tk.Button(root,text = 'Submit',command=lambda : submit(word2,definition2))
 
 definition_label3=tk.Label(root, text="Its Meaning: ", font=('calibre',12))
 definition3=tk.Entry(root,width=80,font=('calibre',12,'normal'))
-sub_btn3=tk.Button(root,text = 'Submit',command=submit)
+sub_btn3=tk.Button(root,text = 'Submit',command=lambda : submit(word3,definition3))
 
 definition_label4=tk.Label(root, text="Its Meaning: ", font=('calibre',12))
 definition4=tk.Entry(root,width=80,font=('calibre',12,'normal'))
-sub_btn4=tk.Button(root,text = 'Submit',command=submit)
+sub_btn4=tk.Button(root,text = 'Submit',command=lambda : submit(word4,definition4))
 
 name_label.grid(row=0,column=0)
 name_entry.grid(row=0,column=1)
