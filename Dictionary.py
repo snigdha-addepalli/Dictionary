@@ -1,6 +1,6 @@
 import json
 from difflib import get_close_matches
-from google_trans_new import google_translator as Translator
+from googletrans as Translator
 import tkinter as tk
 
 translator=Translator()
